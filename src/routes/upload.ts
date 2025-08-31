@@ -6,7 +6,7 @@ import type { FastifyPluginAsync } from 'fastify'
  * @param fastify Fastify 实例
  * @param opts 插件选项
  */
-const uploadRoute: FastifyPluginAsync = async (fastify, opts) => {
+const uploadRoute: FastifyPluginAsync = async (fastify, _opts) => {
   // 注册 multipart 插件
   fastify.register(fastifyMultipart, {
     limits: {

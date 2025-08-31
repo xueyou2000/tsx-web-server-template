@@ -1,15 +1,15 @@
 #!/usr/bin/env tsx
+import cors from '@fastify/cors'
+import formbody from '@fastify/formbody'
+import sensible from '@fastify/sensible'
 // 导入Fastify
 import fastify from 'fastify'
 import { LOG_CONFIG } from './constants'
 // 导入插件
 import configPlugin from './plugins/config'
 import errorHandlerPlugin from './plugins/errorHandler'
-import formbody from '@fastify/formbody'
 import loggerPlugin from './plugins/logger'
-import sensible from '@fastify/sensible'
 import swaggerPlugin from './plugins/swagger'
-import cors from '@fastify/cors'
 // 导入路由
 import routes from './routes'
 
