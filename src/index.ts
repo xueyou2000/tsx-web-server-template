@@ -5,8 +5,11 @@ import { LOG_CONFIG } from './constants'
 // 导入插件
 import configPlugin from './plugins/config'
 import errorHandlerPlugin from './plugins/errorHandler'
+import formbody from '@fastify/formbody'
 import loggerPlugin from './plugins/logger'
+import sensible from '@fastify/sensible'
 import swaggerPlugin from './plugins/swagger'
+import cors from '@fastify/cors'
 // 导入路由
 import routes from './routes'
 
@@ -59,6 +62,20 @@ async function main(): Promise<void> {
 
     // 注册错误处理插件
     await server.register(errorHandlerPlugin)
+
+    // 注册@fastify/sensible插件
+    await server.register(sensible)
+
+    // 注册@fastify/formbody插件
+    await server.register(formbody)
+
+    // 注册CORS插件
+    await server.register(cors, {
+      origin: true, // 允许所有来源
+      methods: ['GET', 'POST', 'PUT', 'DELETE'], // 允许的HTTP方法
+      allowedHeaders: ['Content-Type', 'Authorization'], // 允许的请求头
+      credentials: true, // 允许携带凭证
+    })
 
     // 注册Swagger插件
     await server.register(swaggerPlugin)

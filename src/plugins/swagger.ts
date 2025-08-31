@@ -27,7 +27,7 @@ export default fp(async (fastify, opts) => {
       deepLinking: false,
       docExpansion: 'full',
     },
-    staticCSP: true,
+    staticCSP: false, // 禁用静态CSP以允许Swagger UI连接到API端点
     transformSpecificationClone: true,
   })
 })

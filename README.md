@@ -11,6 +11,7 @@
 - **dotenv** - 环境变量管理
 - **Biome** - 快速代码格式化和检查工具（替代 ESLint + Prettier）
 - **commitlint + husky** - Git 提交规范和钩子
+- **@fastify/multipart** - 文件上传支持
 
 ## 📁 项目结构
 
@@ -58,6 +59,25 @@ pnpm build
 
 ```bash
 pnpm start
+```
+
+### 文件上传
+
+项目现在支持文件上传功能，通过 `@fastify/multipart` 插件实现。
+
+使用示例：
+
+```bash
+# 上传单个文件
+curl -X POST http://localhost:3000/api/upload \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@path/to/your/file.txt"
+
+# 上传文件并附带其他字段
+curl -X POST http://localhost:3000/api/test/upload \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@path/to/your/file.txt" \
+  -F "description=This is a test file"
 ```
 
 ### 代码检查
