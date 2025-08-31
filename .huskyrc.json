@@ -1,0 +1,6 @@
+{
+  "hooks": {
+    "pre-commit": "pnpm format:fix && pnpm lint",
+    "commit-msg": "pnpm commitlint --edit $1"
+  }
+}
